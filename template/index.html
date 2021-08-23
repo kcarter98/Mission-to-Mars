@@ -17,38 +17,55 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape"
         role="button">Scrape New Data</a></p>
     </div>
-    <div>
-      <!-- Mars News -->
-      <div class="row" id="mars-news">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2>Latest Mars News</h2>
-              <h4 class="media-heading">{{mars.news_title}}</h4>
-              <p>{{ mars.news_paragraph }}</p>
-            </div>
+    <!-- Mars News -->
+    <div class="row text-center" id="mars-news">
+      <div class="col-md-12">
+        <div class="media">
+          <div class="media-body">
+            <h2>Latest Mars News</h2>
+            <h4 class="media-heading">{{mars.news_title}}</h4>
+            <p>{{ mars.news_paragraph }}</p>
           </div>
         </div>
       </div>
-      <!-- Section for Featured Image and Facts table -->
-      <div class="row" id="mars-featured-image">
-        <div class="col-md-8">
-          <h2>Featured Mars Image</h2>
-          <img
-            src="{{mars.featured_image }}"
-            class="img-responsive"
-            alt="Responsive image"
-          />
+    </div>
+    <!-- Section for Featured Image and Facts table -->
+    <div class="row" id="mars-featured-image">
+      <div class="col-md-6">
+      <!-- Mars Facts -->
+        <div id="mars-facts">
+          <h2>Mars Facts</h2>
         </div>
-      </div>
-      <div class="col-md-4">
-        <!-- Mars Facts -->
-        <div class="row" id="mars-facts">
-          <h4>Mars Facts</h4>
+        <div>
           {{ mars.facts | safe }}
         </div>
       </div>
+      <div class="col-md-6 text-center">
+        <h2>Featured Mars Image</h2>
+        <img
+          src="{{mars.featured_image }}"
+          class="img-responsive"
+          alt="Responsive image"
+        />
+      </div>
     </div>
+    <!-- Hemisphere images and titles -->
+    <div id="mars-hemispheres" class="col-md-12 text-center">
+      <h2>Mars Hemispheres</h2>
+      <div class="row">
+        {% for hemisphere in mars.hemispheres %}
+        <div class='col-md-3 text-center'>
+          <img
+          src="{{hemisphere['img_url']}}"
+          class="img-responsive"
+          alt="Responsive image"
+          />
+          <h4>{{hemisphere['title']}}</h4>
+        </div>
+        {% endfor %}
+      </div>  
+    </div> 
   </div>
+  
  </body>
 </html>
